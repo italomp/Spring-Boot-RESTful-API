@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
 import com.crud.exceptions.product.ProductNotRegisteredException;
+import com.crud.exceptions.userCrud.LoginAlreadyRegisteredException;
 
 @ControllerAdvice
 public class RestExceptionHandler {
@@ -19,6 +20,14 @@ public class RestExceptionHandler {
 												   ex.getMessage(),
 												   request.getDescription(false));
 		return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(LoginAlreadyRegisteredException.class)
+	public ResponseEntity<CustomError> loginAlreadyRegistered(Exception ex, WebRequest request){
+		CustomError errorMessage = new CustomError(new Date(), 
+												   ex.getMessage(), 
+												   request.getDescription(false));
+		return new ResponseEntity<>(errorMessage, HttpStatus.CONFLICT);
 	}
 	
 	@ExceptionHandler({InternalError.class, Exception.class})
