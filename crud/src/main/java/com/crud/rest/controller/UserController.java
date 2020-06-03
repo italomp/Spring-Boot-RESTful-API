@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crud.rest.model.UserCrud;
-import com.crud.rest.service.UserCrudService;
+import com.crud.rest.model.User;
+import com.crud.rest.service.UserService;
 
 @RestController
 @RequestMapping("/v1/user")
-public class UserCrudController {
+public class UserController {
 	
-	private UserCrudService userCrudService;
+	private UserService userService;
 	
-	public UserCrudController(UserCrudService userCrudService) {
-		this.userCrudService = userCrudService;
+	public UserController(UserService userService) {
+		this.userService = userService;
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity create(@RequestBody UserCrud user) {
-		UserCrud newUser = this.userCrudService.create(user);
+	public ResponseEntity create(@RequestBody User user) {
+		User newUser = this.userService.create(user);
 		return new ResponseEntity(HttpStatus.OK);
 	}
 }

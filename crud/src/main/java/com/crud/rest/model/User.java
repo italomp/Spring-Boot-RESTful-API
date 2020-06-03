@@ -4,18 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class UserCrud {
+public class User {
 
 	@Id
 	private String login; 
 	private String password;
 	private String name;
 	
-	public UserCrud() {
+	public User() {
 		
 	}
 	
-	public UserCrud(String login, String password, String name) {
+	public User(String login, String password, String name) {
 		this.login = login;
 		this.password = password;
 		this.name = name;

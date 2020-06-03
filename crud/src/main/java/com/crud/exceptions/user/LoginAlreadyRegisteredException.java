@@ -1,4 +1,4 @@
-package com.crud.exceptions.userCrud;
+package com.crud.exceptions.user;
 
 public class LoginAlreadyRegisteredException extends RuntimeException{
 
