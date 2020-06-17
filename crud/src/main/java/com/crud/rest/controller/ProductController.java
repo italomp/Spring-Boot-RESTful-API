@@ -24,27 +24,25 @@ public class ProductController {
 		this.productService = productService;
 	}
 	
-	@PostMapping("/")
+	@PostMapping("/private/")
 	public ResponseEntity create(@RequestBody Product product) {
 		Product prodSaved = this.productService.create(product);
 		return new ResponseEntity(HttpStatus.OK);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/public/{id}")
 	public ResponseEntity<Product> findById(@PathVariable long id){
 		Product product = this.productService.findById(id);
 		return new ResponseEntity(product, HttpStatus.OK);
 	}
 	
-	//update
-	@PutMapping("/")
+	@PutMapping("/private/")
 	public ResponseEntity update(@RequestBody Product product) {
 		this.productService.update(product);
 		return new ResponseEntity(HttpStatus.OK);
 	}
 	
-	//delete
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/private/{id}")
 	public ResponseEntity delete(@PathVariable long id) {
 		this.productService.delete(id);
 		return new ResponseEntity(HttpStatus.OK);
