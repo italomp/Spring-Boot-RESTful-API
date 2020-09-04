@@ -13,20 +13,36 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.filter.GenericFilterBean;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 
-
+/**
+ * This is the main class of the project, because it has 
+ * springBootApplication annotation. That's why it
+ * is the responsible class for uploading the spring server.
+ */
 @SpringBootApplication
 @ComponentScan("com.crud")
 public class CrudApplication {
 
+	/**
+	 * This static method start the spring server.
+	 * @param args: argument array.
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(CrudApplication.class, args);
 	}
 	
+	/**
+	 * This method is responsible for filtering tokens for 
+	 * private routes. And here are noted all the private routes.
+	 * The '*' at the end of the route indicates that all the routes
+	 * beginning with "/v1/product/private/" are being passed as a 
+	 * parameter to the addUrlPatterns method.
+	 */
 	@Bean
 	public FilterRegistrationBean filterJwt(){
 		FilterRegistrationBean filter = new FilterRegistrationBean();

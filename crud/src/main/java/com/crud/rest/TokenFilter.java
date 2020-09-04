@@ -13,8 +13,29 @@ import org.springframework.web.filter.GenericFilterBean;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 
+/** 
+ * This class is responsible for filtering the received tokens
+ * in the requests.
+ * @author Italo Modesto
+ */
 public class TokenFilter extends GenericFilterBean{
 
+	/**
+	 * This method applies a filter on tokens to verify if it's valid.
+	 * 
+	 * Firstly, this method converts ServeletRequest to HttpServlerReques 
+	 * to be able to access its authorization attribute;
+	 * 
+	 * then this method extracts the authorization attribute from 
+	 * the request and check if the attribute is null or badly formatted (in
+	 * these cases, exceptions will be throws);
+	 * 
+	 * Finally, The token is extracted from the request and unpacked for it
+	 * can be passed as parameter to the filter chain.
+	 * 
+	 * The filter chain (in this case) call the resource requested.
+	 * 
+	 */
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
