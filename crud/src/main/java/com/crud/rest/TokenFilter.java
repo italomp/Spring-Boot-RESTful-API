@@ -8,6 +8,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.filter.GenericFilterBean;
 
 import io.jsonwebtoken.Jwts;
@@ -40,7 +41,7 @@ public class TokenFilter extends GenericFilterBean{
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		String auth = req.getHeader("Authorization");
+		String auth = req.getHeader("Authorization");                 
 		if(auth == null || !auth.startsWith("Bearer ")) {
 			throw new ServletException("Token inexistente ou mal formatado");
 		}

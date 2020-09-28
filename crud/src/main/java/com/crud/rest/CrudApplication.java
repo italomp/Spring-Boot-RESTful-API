@@ -13,8 +13,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.filter.GenericFilterBean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
@@ -51,4 +55,29 @@ public class CrudApplication {
 		return filter;
 	}
 
+	@Configuration
+	public class MyConfiguration {
+
+	    @Bean
+	    public WebMvcConfigurer corsConfigurer() {
+	        return (WebMvcConfigurer) new WebMvcConfigurerIplmts() {
+	            @Override
+	            public void addCorsMappings(CorsRegistry registry) {
+	                registry.addMapping("/**")
+	                		.allowedOrigins("https://italomp.github.io:80/interface-CRUD/") //this value can't be "*", because allowCredentials(true).
+	                		.allowedMethods("PUT", "DELETE","POST","GET")
+	                		.allowedHeaders("Content-type", "Authorization")
+	                		.allowCredentials(true)
+	                		.maxAge(3600);
+	            }
+	        };
+	    }
+	    
+	    public class WebMvcConfigurerIplmts implements WebMvcConfigurer{
+	    	
+	    	public WebMvcConfigurerIplmts() {
+	    		
+	    	}
+	    }
+	}
 }

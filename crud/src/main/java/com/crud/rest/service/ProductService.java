@@ -1,5 +1,6 @@
 package com.crud.rest.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crud.exceptions.product.ProductNotRegisteredException;
@@ -14,16 +15,15 @@ import com.crud.rest.model.Product;
 @Service
 public class ProductService {
 
+	@Autowired
 	private ProductDao productDao;
 	
 	/**
 	 * This is the product service constructor.
-	 * @param productDAO: It's the DAO (Data access object) that 
-	 *                    manipulates the products in data base.
 	 * @return a product service instance.
 	 */
-	public ProductService(ProductDao productDao) {
-		this.productDao = productDao;
+	public ProductService() {
+	
 	}
 	
 	/**

@@ -1,5 +1,6 @@
 package com.crud.rest.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,18 +19,17 @@ import com.crud.rest.service.UserService;
  */
 @RestController
 @RequestMapping("/v1/user")
-@CrossOrigin
 public class UserController {
 	
+	@Autowired
 	private UserService userService;
 	
 	/**
 	 * This is the user controller constructor.
-	 * @param userService: It's the user service that manipulate the users.
 	 * @return a user controller instance.
 	 */
-	public UserController(UserService userService) {
-		this.userService = userService;
+	public UserController() {
+		
 	}
 	
 	/**

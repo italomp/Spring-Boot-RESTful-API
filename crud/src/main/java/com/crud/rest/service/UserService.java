@@ -1,5 +1,6 @@
 package com.crud.rest.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crud.exceptions.user.LoginAlreadyRegisteredException;
@@ -15,16 +16,15 @@ import com.crud.rest.model.User;
 @Service
 public class UserService {
 	
+	@Autowired
 	private UserDao userDao;
 	
 	/**
 	 * This is the user service constructor.
-	 * @param userDAO: It's the DAO (data access object) that 
-	 * 				   manipulates the users in data base.
 	 * @return a user service instance.
 	 */
-	public UserService(UserDao userDao) {
-		this.userDao = userDao;
+	public UserService() {
+		
 	}
 	
 	/**

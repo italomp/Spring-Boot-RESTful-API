@@ -2,6 +2,7 @@ package com.crud.rest.controller;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +24,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
  */
 @RestController
 @RequestMapping("/v1/auth")
-@CrossOrigin
 public class LoginController {
 
 	/**
@@ -31,16 +31,15 @@ public class LoginController {
 	 * generate and unzip the token.
 	 */
 	private final String TOKEN_KEY = "caneca";
+	@Autowired
 	private UserService userService;
 	
 	/**
 	 * This is the LoginController constructor.
-	 * @param userService: It's a userService instance used
-	 *        by the LoginController in its methods.
 	 * @return a new LoginController instance.
 	 */
-	public LoginController(UserService userService) {
-		this.userService = userService;
+	public LoginController() {
+		
 	}
 	
 	/**

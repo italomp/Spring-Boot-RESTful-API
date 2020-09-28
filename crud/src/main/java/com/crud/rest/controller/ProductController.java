@@ -1,5 +1,6 @@
 package com.crud.rest.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,19 +23,17 @@ import com.crud.rest.service.ProductService;
  */
 @RestController
 @RequestMapping("/v1/product")
-@CrossOrigin
 public class ProductController {
 
+	@Autowired
 	private ProductService productService;
 	
 	/**
 	 * This is the product controller constructor.
-	 * @param productService: It's the product service that
-	 * 						  manipulate the products.
 	 * @return a product controller instance.
 	 */
-	public ProductController(ProductService productService) {
-		this.productService = productService;
+	public ProductController() {
+		
 	}
 	
 	/**
