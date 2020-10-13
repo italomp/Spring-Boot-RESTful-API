@@ -38,46 +38,7 @@ public class CrudApplication {
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(CrudApplication.class, args);
-	}
-	
-	/**
-	 * This method is responsible for filtering tokens for 
-	 * private routes. And here are noted all the private routes.
-	 * The '*' at the end of the route indicates that all the routes
-	 * beginning with "/v1/product/private/" are being passed as a 
-	 * parameter to the addUrlPatterns method.
-	 */
-	@Bean
-	public FilterRegistrationBean filterJwt(){
-		FilterRegistrationBean filter = new FilterRegistrationBean();
-		filter.setFilter(new TokenFilter());
-		filter.addUrlPatterns("/v1/product/private/*");
-		return filter;
-	}
-
-	@Configuration
-	public class MyConfiguration {
-
-	    @Bean
-	    public WebMvcConfigurer corsConfigurer() {
-	        return (WebMvcConfigurer) new WebMvcConfigurerIplmts() {
-	            @Override
-	            public void addCorsMappings(CorsRegistry registry) {
-	                registry.addMapping("/**")
-	                		.allowedOrigins("https://italomp.github.io:80/interface-CRUD/") //this value can't be "*", because allowCredentials(true).
-	                		.allowedMethods("PUT", "DELETE","POST","GET")
-	                		.allowedHeaders("Content-type", "Authorization")
-	                		.allowCredentials(true)
-	                		.maxAge(3600);
-	            }
-	        };
-	    }
+	}    
 	    
-	    public class WebMvcConfigurerIplmts implements WebMvcConfigurer{
-	    	
-	    	public WebMvcConfigurerIplmts() {
-	    		
-	    	}
-	    }
-	}
+	    
 }

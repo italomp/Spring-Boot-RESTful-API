@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,7 @@ import com.crud.rest.service.ProductService;
  * the product routes.
  * @author Italo Modesto
  */
+@CrossOrigin()
 @RestController
 @RequestMapping("/v1/product")
 public class ProductController {
@@ -41,7 +43,7 @@ public class ProductController {
 	 * @param product: It's the new product that will be saved.
 	 * @return a responseEntity with the HttpSatus.
 	 */
-	@PostMapping("/private/")
+	@PostMapping("/")
 	public ResponseEntity create(@RequestBody Product product) {
 		Product prodSaved = this.productService.create(product);
 		return new ResponseEntity(HttpStatus.OK);
@@ -52,7 +54,7 @@ public class ProductController {
 	 * @param id: It's the product id.
 	 * @return a responseEntity with the product and HttpStatus.
 	 */
-	@GetMapping("/public/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Product> findById(@PathVariable long id){
 		Product product = this.productService.findById(id);
 		return new ResponseEntity(product, HttpStatus.OK);
@@ -63,7 +65,7 @@ public class ProductController {
 	 * @param product: It's a product with the new data.
 	 * @return a responseEntity with the HttpStatus.
 	 */
-	@PutMapping("/private/")
+	@PutMapping("/")
 	public ResponseEntity update(@RequestBody Product product) {
 		this.productService.update(product);
 		return new ResponseEntity(HttpStatus.OK);
@@ -74,7 +76,7 @@ public class ProductController {
 	 * @param id: It's the product id.
 	 * @return a responseEntity with the HttpSatus.
 	 */
-	@DeleteMapping("/private/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity delete(@PathVariable long id) {
 		this.productService.delete(id);
 		return new ResponseEntity(HttpStatus.OK);
