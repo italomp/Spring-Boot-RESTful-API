@@ -9,7 +9,7 @@ general for to handle the exceptions thrown by the @Controllers and return custo
     returns a ResposnseEntity with http status or with error message.<br>
 <br>
     
-**2 - Find Product:** http://localhost:8080/api/v1/product//{id} <br>
+**2 - Find Product:** http://localhost:8080/api/v1/product/{id} <br>
     This route receives a request of the get type with url and product id and returns a ResponseEntity <br>
     that contains the product that has the id sent in the url or with error message.<br>
 <br>
@@ -19,7 +19,7 @@ general for to handle the exceptions thrown by the @Controllers and return custo
     and returns a ResposnseEntity with http status.<br>
 <br>
 
-**4 - Delete Produt:** http://localhost:8080/api/v1/product//{id}<br>
+**4 - Delete Produt:** http://localhost:8080/api/v1/product/{id}<br>
     This route receives a request of the delete type with url and product id and returns a ResponseEntity <br>
     that contains the product that has the id sent in the url.<br>
     
