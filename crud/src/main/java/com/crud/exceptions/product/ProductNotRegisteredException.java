@@ -7,6 +7,8 @@ package com.crud.exceptions.product;
  */
 public class ProductNotRegisteredException extends RuntimeException{
 
+	private static final long serialVersionUID = 1L;
+
 	public ProductNotRegisteredException(String message) {
 		super(message);
 	}

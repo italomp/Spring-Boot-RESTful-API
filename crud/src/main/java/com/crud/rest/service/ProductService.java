@@ -61,7 +61,7 @@ public class ProductService {
 	 * @return the product updated.
 	 */
 	public Product update(Product product) {
-		Product oldProduct = findById(product.getId());
+		findById(product.getId());
 		return this.productDao.save(product);
 	}
 	
