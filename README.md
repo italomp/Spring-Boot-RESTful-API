@@ -1,4 +1,4 @@
-# API-RESTful-using-spring-boot
+# Spring Boot RESTful API
 This CRUD API uses spring boot, JPA/Hibernate, H2 Database and REST principles. It has 4 routes and a exception handler
 general for to handle the exceptions thrown by the @Controllers and return custom error messages. <br>
 <br>
